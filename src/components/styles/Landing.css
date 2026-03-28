@@ -93,6 +93,50 @@
   opacity: 0;
 }
 
+/* ── Floating particles ── */
+.landing__particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.landing__particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--teal);
+  opacity: 0;
+  animation: particleDrift 7s ease-in-out infinite;
+}
+
+.landing__particle:nth-child(1)  { left:  5%; top: 20%; animation-duration: 6.0s; animation-delay: 0.0s; }
+.landing__particle:nth-child(2)  { left: 10%; top: 70%; animation-duration: 7.2s; animation-delay: 0.4s; }
+.landing__particle:nth-child(3)  { left: 18%; top: 40%; animation-duration: 5.8s; animation-delay: 0.8s; background: #818cf8; width: 2px; height: 2px; }
+.landing__particle:nth-child(4)  { left: 25%; top: 80%; animation-duration: 6.5s; animation-delay: 1.2s; }
+.landing__particle:nth-child(5)  { left: 32%; top: 15%; animation-duration: 7.8s; animation-delay: 0.2s; background: #fb923c; width: 2px; height: 2px; }
+.landing__particle:nth-child(6)  { left: 40%; top: 60%; animation-duration: 6.2s; animation-delay: 1.6s; width: 4px; height: 4px; }
+.landing__particle:nth-child(7)  { left: 48%; top: 30%; animation-duration: 5.5s; animation-delay: 0.6s; background: #818cf8; }
+.landing__particle:nth-child(8)  { left: 55%; top: 75%; animation-duration: 7.0s; animation-delay: 1.0s; }
+.landing__particle:nth-child(9)  { left: 62%; top: 22%; animation-duration: 6.8s; animation-delay: 0.3s; background: #fb923c; width: 2px; height: 2px; }
+.landing__particle:nth-child(10) { left: 68%; top: 55%; animation-duration: 5.9s; animation-delay: 1.4s; width: 4px; height: 4px; }
+.landing__particle:nth-child(11) { left: 75%; top: 10%; animation-duration: 7.4s; animation-delay: 0.7s; background: #818cf8; }
+.landing__particle:nth-child(12) { left: 80%; top: 65%; animation-duration: 6.3s; animation-delay: 1.8s; }
+.landing__particle:nth-child(13) { left: 87%; top: 35%; animation-duration: 5.7s; animation-delay: 0.9s; background: #fb923c; width: 2px; height: 2px; }
+.landing__particle:nth-child(14) { left: 92%; top: 80%; animation-duration: 6.9s; animation-delay: 0.1s; }
+.landing__particle:nth-child(15) { left: 15%; top: 55%; animation-duration: 7.1s; animation-delay: 2.0s; width: 4px; height: 4px; }
+.landing__particle:nth-child(16) { left: 45%; top: 85%; animation-duration: 6.4s; animation-delay: 1.3s; background: #818cf8; }
+.landing__particle:nth-child(17) { left: 70%; top: 45%; animation-duration: 5.6s; animation-delay: 0.5s; }
+.landing__particle:nth-child(18) { left: 95%; top: 20%; animation-duration: 7.6s; animation-delay: 1.7s; background: #fb923c; width: 2px; height: 2px; }
+
+@keyframes particleDrift {
+  0%   { opacity: 0;    transform: translateY(0)     scale(0.6); }
+  20%  { opacity: 0.6; }
+  80%  { opacity: 0.3; }
+  100% { opacity: 0;    transform: translateY(-80px) scale(1); }
+}
+
 /* ── Row 1 – greeting ── */
 .landing__hi {
   position: absolute;

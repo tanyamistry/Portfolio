@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+/* Word-reveal utility used across sections */
+.reveal-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.reveal-inner {
+  display: inline-block;
+}
+
 :root {
   --bg: #0a0e17;
   --teal: #5eead4;

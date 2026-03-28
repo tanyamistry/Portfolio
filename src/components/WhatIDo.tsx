@@ -42,23 +42,53 @@ const services: Service[] = [
 
 export default function WhatIDo() {
   const sectionRef = useRef<HTMLElement>(null)
-  const cardsRef = useRef<HTMLDivElement>(null)
+  const headingRef = useRef<HTMLHeadingElement>(null)
+  const cardsRef   = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Heading word-by-word reveal
+      if (headingRef.current) {
+        const words = headingRef.current.textContent?.split(' ') || []
+        headingRef.current.innerHTML = words
+          .map(w => `<span class="reveal-word"><span class="reveal-inner">${w}</span></span>`)
+          .join(' ')
+        gsap.fromTo(
+          headingRef.current.querySelectorAll('.reveal-inner'),
+          { y: '100%' },
+          {
+            y: '0%', duration: 0.7, ease: 'power3.out', stagger: 0.1,
+            scrollTrigger: { trigger: sectionRef.current, start: 'top 78%' },
+          }
+        )
+      }
+
+      // Cards stagger in
       if (cardsRef.current?.children) {
         gsap.fromTo(
           Array.from(cardsRef.current.children),
-          { y: 60, opacity: 0 },
+          { y: 60, opacity: 0, scale: 0.95 },
           {
-            y: 0,
-            opacity: 1,
-            duration: 0.85,
-            ease: 'power3.out',
-            stagger: 0.15,
+            y: 0, opacity: 1, scale: 1,
+            duration: 0.85, ease: 'power3.out', stagger: 0.15,
             scrollTrigger: { trigger: sectionRef.current, start: 'top 72%' },
           }
         )
+      }
+
+      // Icon spin on scroll enter
+      if (cardsRef.current) {
+        cardsRef.current.querySelectorAll('.whatido__card-icon').forEach((icon, i) => {
+          gsap.fromTo(icon,
+            { rotate: -180, opacity: 0, scale: 0.5 },
+            {
+              rotate: 0, opacity: 1, scale: 1,
+              duration: 0.7, ease: 'back.out(1.8)',
+              delay: i * 0.15,
+              scrollTrigger: { trigger: sectionRef.current, start: 'top 72%' },
+            }
+          )
+        })
       }
     })
     return () => ctx.revert()
@@ -67,7 +97,7 @@ export default function WhatIDo() {
   return (
     <section ref={sectionRef} className="whatido" id="whatido">
       <div className="section-label">What I Do</div>
-      <h2 className="whatido__heading">My Expertise</h2>
+      <h2 ref={headingRef} className="whatido__heading">My Expertise</h2>
       <div ref={cardsRef} className="whatido__cards">
         {services.map(s => (
           <div key={s.title} className="whatido__card" data-hoverable>
