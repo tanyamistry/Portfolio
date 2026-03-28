@@ -1,7 +1,7 @@
 node_modules/
 dist/
 .DS_Store
-*.jpg
-*.png
-*.glb
+IMG_7424.jpg
+IMG_7425.jpg
+avatar.glb
 .claude/
