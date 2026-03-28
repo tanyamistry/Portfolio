@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
   { value: '3.6',  display: '3.6',  suffix: '',  label: 'GPA at Northeastern', numeric: 3.6,  decimals: 1 },
-  { value: '3+',   display: '3+',   suffix: '+', label: 'Years Experience',     numeric: 3,    decimals: 0 },
+  { value: '2+',   display: '2+',   suffix: '+', label: 'Years Internship Exp', numeric: 2,    decimals: 0 },
   { value: '8+',   display: '8+',   suffix: '+', label: 'Projects Built',       numeric: 8,    decimals: 0 },
   { value: '2026', display: '2026', suffix: '',  label: 'Graduating MS CS',     numeric: 2026, decimals: 0 },
 ]
