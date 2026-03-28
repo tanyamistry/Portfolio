@@ -40,7 +40,7 @@ const projects = [
   {
     title: 'DQN Reinforcement Learning Agent',
     description:
-      'Deep Q-Network agent trained to play a shape-sorting game. Implements a full RL pipeline — environment, replay buffer, epsilon-greedy exploration, and model checkpointing.',
+      'Deep Q-Network agent trained to play a shape-sorting game. Implements a full RL pipeline , environment, replay buffer, epsilon-greedy exploration, and model checkpointing.',
     techs: ['Python', 'Deep Q-Network', 'RL', 'PyTorch'],
     link: 'https://github.com/tanyamistry/FOAI-Project',
     accent: '#818cf8',
@@ -85,7 +85,7 @@ const projects = [
   {
     title: 'Netflix Data Analysis',
     description:
-      'Exploratory analysis of Netflix content data using Python — uncovering trends in genres, release years, ratings, and content distribution across countries to surface insights about streaming strategy.',
+      'Exploratory analysis of Netflix content data using Python , uncovering trends in genres, release years, ratings, and content distribution across countries to surface insights about streaming strategy.',
     techs: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Jupyter'],
     link: 'https://github.com/tanyamistry/netflix-analysis',
     accent: '#ef4444',

@@ -171,7 +171,7 @@
 }
 
 .career__bullets li::before {
-  content: '–';
+  content: '·';
   color: var(--teal);
   position: absolute;
   left: 0;

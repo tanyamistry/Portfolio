@@ -9,7 +9,7 @@ const jobs = [
   {
     title: 'Engineering Co-op',
     company: 'Northeastern University (EDGE)',
-    period: 'Jan 2025 – Present',
+    period: 'Jan 2025 - Present',
     current: true,
     bullets: [
       'Architected an ETL pipeline to migrate course content to Canvas via REST APIs, reducing manual migration effort by 25%',
@@ -19,7 +19,7 @@ const jobs = [
   {
     title: 'Data Analyst Intern',
     company: 'One Hand Clap',
-    period: 'Jun 2023 – May 2024',
+    period: 'Jun 2023 - May 2024',
     current: false,
     bullets: [
       'Built automated reporting workflows with ListenFirst API, SQL, and Excel tracking engagement metrics for Amazon Prime Video',
@@ -30,7 +30,7 @@ const jobs = [
   {
     title: 'Business Intelligence Intern',
     company: 'Your Career Folio',
-    period: 'Sep 2022 – Nov 2022',
+    period: 'Sep 2022 - Nov 2022',
     current: false,
     bullets: [
       'Researched and benchmarked 10+ competitor platforms; findings shaped new client offerings and drove a 12% increase in platform usage',
@@ -85,7 +85,7 @@ export default function Career() {
       <div ref={timelineRef} className="career__timeline">
         {jobs.map((job, i) => (
           <div key={i} className="career__row">
-            {/* LEFT – date */}
+            {/* LEFT - date */}
             <div className="career__left">
               <span className="career__period">
                 {job.current && <span className="career__now">Now</span>}
@@ -93,12 +93,12 @@ export default function Career() {
               </span>
             </div>
 
-            {/* CENTER – line + dot */}
+            {/* CENTER - line + dot */}
             <div className="career__center">
               <div className={`career__dot ${job.current ? 'career__dot--active' : ''}`} />
             </div>
 
-            {/* RIGHT – content */}
+            {/* RIGHT - content */}
             <div className="career__right">
               <div className="career__card">
                 <h3 className="career__title">{job.title}</h3>
