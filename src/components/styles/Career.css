@@ -1,0 +1,223 @@
+.career {
+  padding: 9rem 3rem;
+  position: relative;
+}
+
+.career__heading {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 3.5rem;
+  color: var(--white);
+}
+
+/* ── Animated line track ── */
+.career__line-track {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  top: 8.5rem; /* offset for heading */
+  bottom: 9rem;
+  background: var(--border);
+  z-index: 0;
+}
+
+.career__line-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--teal), rgba(94, 234, 212, 0.2));
+  transform-origin: top;
+}
+
+/* ── Timeline grid ── */
+.career__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.career__row {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  gap: 0 1.5rem;
+  position: relative;
+}
+
+/* Vertical line through center column */
+.career__row:not(:last-child) .career__center::after {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: calc(100% + 3rem);
+  background: var(--border);
+}
+
+/* Extra line segment above first dot to fill gap */
+.career__row:first-child .career__center::before {
+  content: none;
+}
+
+/* ── Left column – date ── */
+.career__left {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-top: 0.9rem;
+  padding-bottom: 3rem;
+}
+
+.career__period {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--gray);
+  letter-spacing: 0.03em;
+  background: rgba(94, 234, 212, 0.07);
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  white-space: nowrap;
+  text-align: right;
+}
+
+.career__now {
+  background: var(--teal);
+  color: #0a0e17;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.1rem 0.42rem;
+  border-radius: 20px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* ── Center column – dot ── */
+.career__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 0.9rem;
+  padding-bottom: 3rem;
+}
+
+.career__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.4);
+  border: 2px solid var(--bg);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.career__dot--active {
+  background: var(--teal);
+  box-shadow: 0 0 14px rgba(94, 234, 212, 0.65);
+}
+
+/* ── Right column – card ── */
+.career__right {
+  padding-bottom: 3rem;
+}
+
+.career__card {
+  padding: 1.6rem 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(17, 24, 39, 0.6);
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.career__card:hover {
+  border-color: rgba(94, 234, 212, 0.35);
+  transform: translateY(-3px);
+}
+
+.career__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.career__company {
+  font-size: 0.85rem;
+  color: var(--teal);
+  margin-bottom: 1rem;
+}
+
+.career__bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.career__bullets li {
+  font-size: 0.855rem;
+  color: var(--gray);
+  line-height: 1.65;
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.career__bullets li::before {
+  content: '–';
+  color: var(--teal);
+  position: absolute;
+  left: 0;
+}
+
+/* ── Last row no bottom line ── */
+.career__row:last-child .career__left,
+.career__row:last-child .career__center,
+.career__row:last-child .career__right {
+  padding-bottom: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .career {
+    padding: 5rem 1.5rem;
+  }
+
+  /* Stack: date above card, no center column */
+  .career__row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--border);
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .career__center {
+    position: absolute;
+    left: -6px;
+    top: 0.9rem;
+    padding: 0;
+  }
+
+  .career__center::after {
+    display: none;
+  }
+
+  .career__left {
+    justify-content: flex-start;
+    padding-bottom: 0.8rem;
+    padding-top: 0;
+  }
+
+  .career__right {
+    padding-bottom: 0;
+  }
+}

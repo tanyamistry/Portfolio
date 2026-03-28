@@ -1,0 +1,52 @@
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--teal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+}
+
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--teal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  transition: width 0.25s, height 0.25s, opacity 0.25s;
+}
+
+.cursor-dot--active {
+  width: 12px;
+  height: 12px;
+}
+
+.cursor-outline--active {
+  width: 52px;
+  height: 52px;
+  opacity: 0.25;
+}
+
+@media (hover: none) {
+  .cursor-dot,
+  .cursor-outline {
+    display: none;
+  }
+  body {
+    cursor: auto;
+  }
+  button, a {
+    cursor: pointer;
+  }
+}

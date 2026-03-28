@@ -1,0 +1,191 @@
+.lv {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Aurora blobs ── */
+.lv__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  pointer-events: none;
+}
+
+.lv__blob--1 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(94, 234, 212, 0.22) 0%, transparent 70%);
+  top: 10%;
+  left: 25%;
+  animation: blobDrift1 9s ease-in-out infinite alternate;
+}
+
+.lv__blob--2 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(129, 140, 248, 0.18) 0%, transparent 70%);
+  bottom: 15%;
+  right: 10%;
+  animation: blobDrift2 11s ease-in-out infinite alternate;
+}
+
+.lv__blob--3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.14) 0%, transparent 70%);
+  top: 55%;
+  left: 10%;
+  animation: blobDrift3 7s ease-in-out infinite alternate;
+}
+
+@keyframes blobDrift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(30px, -20px) scale(1.1); }
+}
+@keyframes blobDrift2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-25px, 30px) scale(0.95); }
+}
+@keyframes blobDrift3 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(20px, -25px) scale(1.05); }
+}
+
+/* ── Subtle dot grid ── */
+.lv__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(94, 234, 212, 0.18) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* ── Floating particles ── */
+.lv__particle {
+  position: absolute;
+  border-radius: 50%;
+  background: #5eead4;
+  opacity: 0;
+  animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+  0%   { opacity: 0; transform: translateY(0) scale(0.8); }
+  20%  { opacity: 0.7; }
+  80%  { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-55px) scale(1.1); }
+}
+
+/* ── Central orb ── */
+.lv__orb {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.lv__orb-core {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #99f6e4, #5eead4 50%, #0d9488);
+  box-shadow:
+    0 0 30px rgba(94, 234, 212, 0.5),
+    0 0 60px rgba(94, 234, 212, 0.2),
+    inset 0 0 20px rgba(255,255,255,0.1);
+  animation: orbPulse 4s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes orbPulse {
+  0%, 100% { box-shadow: 0 0 30px rgba(94,234,212,0.5), 0 0 60px rgba(94,234,212,0.2); transform: scale(1); }
+  50%       { box-shadow: 0 0 50px rgba(94,234,212,0.7), 0 0 90px rgba(94,234,212,0.3); transform: scale(1.06); }
+}
+
+/* Orbit rings */
+.lv__orb-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(94, 234, 212, 0.25);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lv__orb-ring--1 {
+  width: 110px;
+  height: 110px;
+  animation: ringRotate1 8s linear infinite;
+  border-color: rgba(94, 234, 212, 0.35);
+}
+.lv__orb-ring--2 {
+  width: 155px;
+  height: 155px;
+  animation: ringRotate2 12s linear infinite;
+  border-style: dashed;
+}
+.lv__orb-ring--3 {
+  width: 200px;
+  height: 200px;
+  animation: ringRotate1 18s linear infinite reverse;
+  border-color: rgba(129, 140, 248, 0.2);
+}
+
+@keyframes ringRotate1 {
+  from { transform: translate(-50%, -50%) rotate(0deg) rotateX(65deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg) rotateX(65deg); }
+}
+@keyframes ringRotate2 {
+  from { transform: translate(-50%, -50%) rotate(0deg) rotateX(40deg) rotateY(20deg); }
+  to   { transform: translate(-50%, -50%) rotate(-360deg) rotateX(40deg) rotateY(20deg); }
+}
+
+/* Orbiting dots */
+.lv__orb-dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  background: #5eead4;
+  box-shadow: 0 0 8px #5eead4;
+}
+
+.lv__orb-dot--1 {
+  animation: dotOrbit1 8s linear infinite;
+}
+.lv__orb-dot--2 {
+  background: #818cf8;
+  box-shadow: 0 0 8px #818cf8;
+  animation: dotOrbit2 12s linear infinite;
+}
+.lv__orb-dot--3 {
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+  animation: dotOrbit3 6s linear infinite;
+}
+
+@keyframes dotOrbit1 {
+  from { transform: translate(-50%, -50%) rotate(0deg) translateX(55px); }
+  to   { transform: translate(-50%, -50%) rotate(360deg) translateX(55px); }
+}
+@keyframes dotOrbit2 {
+  from { transform: translate(-50%, -50%) rotate(120deg) translateX(77px); }
+  to   { transform: translate(-50%, -50%) rotate(480deg) translateX(77px); }
+}
+@keyframes dotOrbit3 {
+  from { transform: translate(-50%, -50%) rotate(240deg) translateX(42px); }
+  to   { transform: translate(-50%, -50%) rotate(600deg) translateX(42px); }
+}
