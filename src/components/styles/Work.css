@@ -130,7 +130,16 @@
 }
 
 @media (max-width: 600px) {
+  .work {
+    padding: 4rem 1.2rem;
+  }
   .work__grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .work__card {
+    transform: none !important;
+    transform-style: flat;
+    will-change: auto;
   }
 }

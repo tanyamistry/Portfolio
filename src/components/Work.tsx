@@ -123,9 +123,9 @@ export default function Work() {
     return () => ctx.revert()
   }, [])
 
-  // Attach 3D tilt to every card
+  // Attach 3D tilt to every card (desktop only)
   useEffect(() => {
-    if (!gridRef.current) return
+    if (!gridRef.current || window.matchMedia('(hover: none)').matches) return
     const cleanups = Array.from(gridRef.current.children).map(el => addTilt(el as HTMLElement))
     return () => cleanups.forEach(c => c())
   }, [])
