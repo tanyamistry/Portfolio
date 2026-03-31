@@ -37,7 +37,6 @@ function typewriter(el: HTMLElement, text: string, speed = 45, delay = 0) {
 
 export default function Landing() {
   const sectionRef  = useRef<HTMLElement>(null)
-  const hiRef       = useRef<HTMLDivElement>(null)
   const nameRowRef  = useRef<HTMLDivElement>(null)
   const tanyaRef    = useRef<HTMLSpanElement>(null)
   const mistryRef   = useRef<HTMLSpanElement>(null)
@@ -51,12 +50,6 @@ export default function Landing() {
 
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.15 })
-
-    // "hi, i'm" fade + slide up
-    tl.fromTo(hiRef.current,
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
-    )
 
     // Avatar spring
     tl.fromTo(avatarRef.current,
@@ -166,9 +159,6 @@ export default function Landing() {
           <span key={i} className="landing__particle" style={{ '--i': i } as React.CSSProperties} />
         ))}
       </div>
-
-      {/* Row 1 – greeting */}
-      <div ref={hiRef} className="landing__hi">hi, i'm</div>
 
       {/* Row 2 – TANYA [avatar] MISTRY */}
       <div ref={nameRowRef} className="landing__name-row">
