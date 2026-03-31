@@ -23,15 +23,6 @@ function scramble(el: HTMLElement, finalText: string, delay = 0) {
   }, delay)
 }
 
-function splitLetters(el: HTMLElement) {
-  const text = el.textContent || ''
-  el.innerHTML = text
-    .split('')
-    .map(c => c === ' ' ? ' ' : `<span class="letter">${c}</span>`)
-    .join('')
-  return Array.from(el.querySelectorAll<HTMLElement>('.letter'))
-}
-
 // Typewriter effect
 function typewriter(el: HTMLElement, text: string, speed = 45, delay = 0) {
   el.textContent = ''
@@ -61,14 +52,11 @@ export default function Landing() {
   useEffect(() => {
     const tl = gsap.timeline({ delay: 0.15 })
 
-    // "hi, i'm" letter-by-letter flip
-    if (hiRef.current) {
-      const letters = splitLetters(hiRef.current)
-      tl.fromTo(letters,
-        { y: 40, opacity: 0, rotateX: -90 },
-        { y: 0, opacity: 1, rotateX: 0, duration: 0.5, ease: 'back.out(2)', stagger: 0.04 }
-      )
-    }
+    // "hi, i'm" fade + slide up
+    tl.fromTo(hiRef.current,
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }
+    )
 
     // Avatar spring
     tl.fromTo(avatarRef.current,

@@ -141,5 +141,17 @@
     transform: none !important;
     transform-style: flat;
     will-change: auto;
+    padding: 1.4rem;
+  }
+  .work__card-title {
+    font-size: 0.95rem;
+  }
+  .work__card-desc {
+    font-size: 0.82rem;
+    line-height: 1.65;
+  }
+  .work__card-tech {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.6rem;
   }
 }

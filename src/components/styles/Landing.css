@@ -128,23 +128,14 @@
 
 /* ── Row 1 – greeting ── */
 .landing__hi {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
   color: var(--teal);
   font-weight: 700;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  perspective: 400px;
+  letter-spacing: 0.14em;
+  margin-bottom: 0.6rem;
+  text-transform: lowercase;
   position: relative;
   z-index: 1;
-}
-
-.landing__hi .letter {
-  display: inline-block;
-  transform-origin: bottom center;
 }
 
 /* ── Row 2 – TANYA [avatar] MISTRY ── */
