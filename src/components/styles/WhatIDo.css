@@ -7,6 +7,7 @@
   font-weight: 700;
   margin-bottom: 3rem;
   color: var(--white);
+  overflow: hidden;
 }
 
 .whatido__cards {
@@ -70,11 +71,28 @@
 
 @media (max-width: 1024px) {
   .whatido {
-    padding: 5rem 1.5rem;
+    padding: 5rem 2rem;
+  }
+  .whatido__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .whatido {
+    padding: 4rem 1.2rem;
   }
   .whatido__cards {
     grid-template-columns: 1fr;
-    max-width: 520px;
-    margin: 0 auto;
+    gap: 1rem;
+  }
+  .whatido__card {
+    padding: 1.5rem 1.2rem;
+  }
+  .whatido__card-title {
+    font-size: 1.05rem;
+  }
+  .whatido__card-desc {
+    font-size: 0.84rem;
   }
 }

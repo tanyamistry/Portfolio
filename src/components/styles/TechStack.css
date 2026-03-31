@@ -7,6 +7,7 @@
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: var(--white);
+  overflow: hidden;
 }
 
 .techstack__sub {
@@ -94,15 +95,27 @@
 
 @media (max-width: 1024px) {
   .techstack {
-    padding: 5rem 1.5rem 3rem;
+    padding: 5rem 2rem 3rem;
   }
   .techstack__categories {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem;
   }
 }
 
 @media (max-width: 640px) {
+  .techstack {
+    padding: 4rem 1.2rem 3rem;
+  }
   .techstack__categories {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .techstack__cat {
+    padding: 1.2rem;
+  }
+  .techstack__pill {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
   }
 }

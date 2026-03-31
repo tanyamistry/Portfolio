@@ -16,7 +16,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 1px;
-  top: 8.5rem; /* offset for heading */
+  top: 8.5rem;
   bottom: 9rem;
   background: var(--border);
   z-index: 0;
@@ -45,7 +45,6 @@
   position: relative;
 }
 
-/* Vertical line through center column */
 .career__row:not(:last-child) .career__center::after {
   content: '';
   position: absolute;
@@ -57,7 +56,6 @@
   background: var(--border);
 }
 
-/* Extra line segment above first dot to fill gap */
 .career__row:first-child .career__center::before {
   content: none;
 }
@@ -184,13 +182,14 @@
   padding-bottom: 0;
 }
 
-/* ── Responsive ── */
+/* ── Tablet ── */
 @media (max-width: 768px) {
   .career {
     padding: 5rem 1.5rem;
   }
-
-  /* Stack: date above card, no center column */
+  .career__line-track {
+    display: none;
+  }
   .career__row {
     grid-template-columns: 1fr;
     gap: 0.5rem;
@@ -199,25 +198,48 @@
     padding-bottom: 2.5rem;
     position: relative;
   }
-
   .career__center {
     position: absolute;
     left: -6px;
     top: 0.9rem;
     padding: 0;
   }
-
   .career__center::after {
-    display: none;
+    display: none !important;
   }
-
   .career__left {
     justify-content: flex-start;
     padding-bottom: 0.8rem;
     padding-top: 0;
   }
-
   .career__right {
     padding-bottom: 0;
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .career {
+    padding: 4rem 1rem;
+  }
+  .career__row {
+    padding-left: 1.2rem;
+    padding-bottom: 2rem;
+  }
+  .career__card {
+    padding: 1.2rem;
+  }
+  .career__title {
+    font-size: 0.95rem;
+  }
+  .career__company {
+    font-size: 0.8rem;
+  }
+  .career__bullets li {
+    font-size: 0.8rem;
+  }
+  .career__period {
+    font-size: 0.72rem;
+    padding: 0.25rem 0.7rem;
   }
 }
