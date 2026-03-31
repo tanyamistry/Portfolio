@@ -137,6 +137,9 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+  .work__card--featured {
+    grid-row: auto;
+  }
   .work__card {
     transform: none !important;
     transform-style: flat;
