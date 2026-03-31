@@ -128,14 +128,15 @@
 
 /* ── Row 1 – greeting ── */
 .landing__hi {
-  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-size: clamp(0.85rem, 1.8vw, 1.1rem);
   color: var(--teal);
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  margin-bottom: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.5rem;
   text-transform: lowercase;
   position: relative;
   z-index: 1;
+  opacity: 0; /* starts hidden, GSAP fades in */
 }
 
 /* ── Row 2 – TANYA [avatar] MISTRY ── */

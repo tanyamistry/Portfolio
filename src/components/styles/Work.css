@@ -129,7 +129,7 @@
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .work {
     padding: 4rem 1.2rem;
   }
@@ -141,17 +141,27 @@
     transform: none !important;
     transform-style: flat;
     will-change: auto;
-    padding: 1.4rem;
+    padding: 1.3rem 1.2rem;
+    gap: 0.7rem;
   }
   .work__card-title {
     font-size: 0.95rem;
   }
   .work__card-desc {
     font-size: 0.82rem;
-    line-height: 1.65;
+    line-height: 1.6;
+    /* Limit description length on mobile */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
   .work__card-tech {
     font-size: 0.72rem;
-    padding: 0.25rem 0.6rem;
+    padding: 0.22rem 0.55rem;
+  }
+  .work__card-icon {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
