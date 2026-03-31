@@ -58,9 +58,9 @@ const projects = [
   {
     title: 'Automated Chart Insights Generator',
     description:
-      'Automates generation of chart summaries by extracting axis labels and key data points using OpenCV, structuring them into JSON, and calling LLM endpoints through the Replicate API for accessible insights.',
-    techs: ['Python', 'OpenCV', 'Replicate API', 'JSON', 'LLM'],
-    link: null,
+      'Upload any chart image and get plain-English insights powered by LLaVA running locally via Ollama. Uses OpenCV and EasyOCR to extract axis labels, detects chart type (bar, line, pie, scatter), and generates structured AI insights with JSON export.',
+    techs: ['Python', 'OpenCV', 'EasyOCR', 'LLaVA', 'Ollama', 'Streamlit'],
+    link: 'https://github.com/tanyamistry/automated-chart-insights-generator',
     accent: '#34d399',
     featured: false,
   },
