@@ -1,13 +1,19 @@
 .career {
-  padding: 9rem 3rem;
+  padding: 8rem 3rem;
   position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
 }
 
 .career__heading {
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-family: var(--display);
+  font-optical-sizing: auto;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 600;
+  font-style: italic;
   margin-bottom: 3.5rem;
-  color: var(--white);
+  color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 /* ── Animated line track ── */
@@ -15,17 +21,19 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 1px;
+  width: 2px;
   top: 8.5rem;
   bottom: 9rem;
   background: var(--border);
+  border-radius: 2px;
   z-index: 0;
 }
 
 .career__line-fill {
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, var(--teal), rgba(94, 234, 212, 0.2));
+  background: var(--blue);
+  border-radius: 2px;
   transform-origin: top;
 }
 
@@ -51,7 +59,7 @@
   top: 16px;
   left: 50%;
   transform: translateX(-50%);
-  width: 1px;
+  width: 2px;
   height: calc(100% + 3rem);
   background: var(--border);
 }
@@ -74,23 +82,24 @@
   align-items: center;
   gap: 0.45rem;
   font-size: 0.78rem;
-  color: var(--gray);
+  color: var(--text-soft);
   letter-spacing: 0.03em;
-  background: rgba(94, 234, 212, 0.07);
-  padding: 0.3rem 0.9rem;
-  border-radius: 20px;
+  background: var(--card);
+  padding: 0.35rem 0.95rem;
+  border-radius: 0;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
   white-space: nowrap;
   text-align: right;
 }
 
 .career__now {
-  background: var(--teal);
-  color: #0a0e17;
+  background: var(--coral);
+  color: #fff;
   font-size: 0.62rem;
   font-weight: 700;
-  padding: 0.1rem 0.42rem;
-  border-radius: 20px;
+  padding: 0.12rem 0.46rem;
+  border-radius: 0;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -106,11 +115,11 @@
 }
 
 .career__dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: rgba(148, 163, 184, 0.4);
-  border: 2px solid var(--bg);
+  background: var(--apricot);
+  border: 3px solid var(--bg);
   flex-shrink: 0;
   position: relative;
   z-index: 1;
@@ -118,8 +127,8 @@
 }
 
 .career__dot--active {
-  background: var(--teal);
-  box-shadow: 0 0 14px rgba(94, 234, 212, 0.65);
+  background: var(--coral);
+  box-shadow: 0 0 0 5px rgba(255, 155, 133, 0.25);
 }
 
 /* ── Right column – card ── */
@@ -128,28 +137,31 @@
 }
 
 .career__card {
-  padding: 1.6rem 1.8rem;
+  padding: 1.7rem 1.9rem;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  background: rgba(17, 24, 39, 0.6);
-  transition: border-color 0.25s, transform 0.25s;
+  border-radius: 0;
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .career__card:hover {
-  border-color: rgba(94, 234, 212, 0.35);
-  transform: translateY(-3px);
+  transform: translate(-4px,-4px) rotate(-0.4deg);
+  box-shadow: 7px 7px 0 var(--blue);
 }
 
 .career__title {
-  font-size: 1.05rem;
+  font-family: var(--display);
+  font-size: 1.2rem;
   font-weight: 600;
-  color: var(--white);
+  color: var(--text);
   margin-bottom: 0.25rem;
 }
 
 .career__company {
   font-size: 0.85rem;
-  color: var(--teal);
+  color: var(--coral-deep);
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 
@@ -161,18 +173,20 @@
 }
 
 .career__bullets li {
-  font-size: 0.855rem;
-  color: var(--gray);
+  font-size: 0.875rem;
+  color: var(--text-soft);
   line-height: 1.65;
-  padding-left: 1.1rem;
+  padding-left: 1.3rem;
   position: relative;
 }
 
 .career__bullets li::before {
-  content: '·';
-  color: var(--teal);
+  content: '↳';
+  font-size: 0.7rem;
+  color: var(--rose);
   position: absolute;
   left: 0;
+  top: 0.2rem;
 }
 
 /* ── Last row no bottom line ── */
@@ -194,13 +208,13 @@
     grid-template-columns: 1fr;
     gap: 0.5rem;
     padding-left: 1.5rem;
-    border-left: 1px solid var(--border);
+    border-left: 2px solid var(--border);
     padding-bottom: 2.5rem;
     position: relative;
   }
   .career__center {
     position: absolute;
-    left: -6px;
+    left: -8px;
     top: 0.9rem;
     padding: 0;
   }
@@ -227,19 +241,19 @@
     padding-bottom: 2rem;
   }
   .career__card {
-    padding: 1.2rem;
+    padding: 1.3rem;
   }
   .career__title {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
   }
   .career__company {
     font-size: 0.8rem;
   }
   .career__bullets li {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
   }
   .career__period {
     font-size: 0.72rem;
-    padding: 0.25rem 0.7rem;
+    padding: 0.28rem 0.75rem;
   }
 }

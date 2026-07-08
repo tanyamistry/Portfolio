@@ -28,13 +28,13 @@ export default function ScrollProgress() {
         top: 0,
         left: 0,
         right: 0,
-        height: '2px',
-        background: 'var(--teal)',
+        height: '3px',
+        background: '#3454d1',
         transformOrigin: 'left',
         transform: 'scaleX(0)',
         zIndex: 200,
         pointerEvents: 'none',
-        boxShadow: '0 0 8px rgba(94,234,212,0.6)',
+        boxShadow: 'none',
       }}
     />
   )

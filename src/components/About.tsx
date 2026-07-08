@@ -6,43 +6,58 @@ import './styles/About.css'
 gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
-  { value: '3.6',  display: '3.6',  suffix: '',  label: 'GPA at Northeastern', numeric: 3.6,  decimals: 1 },
-  { value: '2+',   display: '2+',   suffix: '+', label: 'Years Internship Exp', numeric: 2,    decimals: 0 },
-  { value: '8+',   display: '8+',   suffix: '+', label: 'Projects Built',       numeric: 8,    decimals: 0 },
-  { value: '2026', display: '2026', suffix: '',  label: 'Graduating MS CS',     numeric: 2026, decimals: 0 },
+  { display: '3.67', suffix: '',  label: 'GPA',              numeric: 3.67, decimals: 2 },
+  { display: '10K+', suffix: 'K+', label: 'Events / minute',  numeric: 10,   decimals: 0 },
+  { display: '25%',  suffix: '%', label: 'Manual effort cut', numeric: 25,   decimals: 0 },
+  { display: '2026', suffix: '',  label: 'MS CS, Dec',       numeric: 2026, decimals: 0 },
 ]
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null)
-  const textRef    = useRef<HTMLDivElement>(null)
+  const leadRef    = useRef<HTMLHeadingElement>(null)
+  const introRef   = useRef<HTMLParagraphElement>(null)
   const statsRef   = useRef<HTMLDivElement>(null)
+  const tagRef     = useRef<HTMLDivElement>(null)
   const valueRefs  = useRef<(HTMLSpanElement | null)[]>([])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Text slide in
-      gsap.fromTo(textRef.current,
-        { x: -60, opacity: 0 },
-        {
-          x: 0, opacity: 1, duration: 1, ease: 'power3.out',
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 76%' },
-        }
-      )
-
-      // Stat cards stagger in
-      if (statsRef.current?.children) {
+      if (leadRef.current) {
         gsap.fromTo(
-          Array.from(statsRef.current.children),
-          { y: 40, opacity: 0, scale: 0.92 },
+          leadRef.current.querySelectorAll('.about__lead-word'),
+          { y: '110%' },
           {
-            y: 0, opacity: 1, scale: 1,
-            duration: 0.7, ease: 'power3.out', stagger: 0.12,
+            y: '0%', duration: 0.7, ease: 'power3.out', stagger: 0.04,
             scrollTrigger: { trigger: sectionRef.current, start: 'top 72%' },
+            onComplete: () => {
+              leadRef.current?.querySelectorAll('.about__lead-wrap').forEach(
+                w => ((w as HTMLElement).style.overflow = 'visible')
+              )
+            },
           }
         )
       }
 
-      // Number counters
+      gsap.fromTo([introRef.current, tagRef.current],
+        { y: 24, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', stagger: 0.12,
+          scrollTrigger: { trigger: introRef.current, start: 'top 88%' },
+        }
+      )
+
+      if (statsRef.current?.children) {
+        gsap.fromTo(
+          Array.from(statsRef.current.children),
+          { y: 30, opacity: 0 },
+          {
+            y: 0, opacity: 1,
+            duration: 0.6, ease: 'power3.out', stagger: 0.1,
+            scrollTrigger: { trigger: statsRef.current, start: 'top 90%' },
+          }
+        )
+      }
+
       stats.forEach((s, i) => {
         const el = valueRefs.current[i]
         if (!el) return
@@ -52,57 +67,63 @@ export default function About() {
           duration: s.numeric === 2026 ? 1 : 1.5,
           ease: 'power2.out',
           onUpdate: () => {
-            const v = s.decimals > 0
-              ? obj.val.toFixed(s.decimals)
-              : Math.round(obj.val).toString()
+            const v = s.decimals > 0 ? obj.val.toFixed(s.decimals) : Math.round(obj.val).toString()
             el.textContent = v + s.suffix
           },
-          scrollTrigger: { trigger: sectionRef.current, start: 'top 68%' },
+          scrollTrigger: { trigger: statsRef.current, start: 'top 90%' },
         })
       })
     })
     return () => ctx.revert()
   }, [])
 
+  const leadParts = [
+    { t: 'I build reliable ', em: false },
+    { t: 'data systems', em: true },
+    { t: ' and software that turn raw information into ', em: false },
+    { t: 'useful products', em: true },
+    { t: '.', em: false },
+  ]
+
   return (
     <section ref={sectionRef} className="about" id="about">
-      <div className="section-label">About</div>
-      <div className="about__inner">
-        <div ref={textRef} className="about__text">
-          <h2 className="about__heading">
-            Building data-driven<br />
-            <span className="about__heading--teal">solutions at scale</span>
-          </h2>
-          <p className="about__body">
-            I'm a graduate student at <strong>Northeastern University</strong> pursuing my MS in Computer
-            Science (Dec 2026), with a BTech in Information Technology from the University of Mumbai.
-          </p>
-          <p className="about__body">
-            I specialize in building <strong>real-time data pipelines</strong>,{' '}
-            <strong>machine learning systems</strong>, and <strong>full-stack applications</strong>.
-            From Kafka streaming and Spark transformations to cloud-native ETL workflows on AWS — I
-            enjoy turning raw data into actionable insights.
-          </p>
-          <p className="about__body">
-            Currently an <strong>Engineering Co-op at Northeastern University EDGE</strong>, where I
-            architect ETL pipelines and build LTI-integrated learning tools with React, Node.js, and
-            PostgreSQL.
-          </p>
-        </div>
+      <div className="section-head">
+        <span className="section-num">01</span>
+        <span className="section-name">About</span>
+        <span className="section-rule" />
+      </div>
 
-        <div ref={statsRef} className="about__stats">
-          {stats.map((s, i) => (
-            <div key={s.label} className="about__stat" data-hoverable>
-              <span
-                ref={el => { valueRefs.current[i] = el }}
-                className="about__stat-value"
-              >
-                {s.display}
+      <h2 ref={leadRef} className="about__lead">
+        {leadParts.map((p, i) =>
+          p.t.split(' ').map((w, j, arr) => (
+            <span key={`${i}-${j}`} className="about__lead-wrap">
+              <span className={`about__lead-word ${p.em ? 'about__lead-word--em' : ''}`}>
+                {w}{j < arr.length - 1 ? ' ' : ''}
               </span>
-              <span className="about__stat-label">{s.label}</span>
-            </div>
-          ))}
-        </div>
+            </span>
+          ))
+        )}
+      </h2>
+
+      <p ref={introRef} className="about__intro">
+        I&apos;m an MS Computer Science student at Northeastern University with experience in data
+        engineering, backend development, analytics, and applied machine learning.
+      </p>
+
+      <div ref={statsRef} className="about__stats">
+        {stats.map((s, i) => (
+          <div key={s.label} className="about__stat">
+            <span ref={el => { valueRefs.current[i] = el }} className="about__stat-value">
+              {s.display}
+            </span>
+            <span className="about__stat-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <div ref={tagRef} className="about__tag">
+        <span className="about__tag-dot" />
+        Engineering Co-op at Northeastern EDGE · MS Computer Science, graduating December 2026
       </div>
     </section>
   )

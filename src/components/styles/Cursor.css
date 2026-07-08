@@ -4,38 +4,45 @@
   left: 0;
   width: 8px;
   height: 8px;
-  background: var(--teal);
+  background: var(--coral);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s;
+  transition: width 0.2s, height 0.2s, background 0.2s;
 }
 
 .cursor-outline {
   position: fixed;
   top: 0;
   left: 0;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid var(--teal);
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--blue);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
   transform: translate(-50%, -50%);
-  opacity: 0.5;
-  transition: width 0.25s, height 0.25s, opacity 0.25s;
+  opacity: 0.6;
+  transition: width 0.25s, height 0.25s, opacity 0.25s, background 0.25s, border-color 0.25s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body, button, a { cursor: none; }
 }
 
 .cursor-dot--active {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
+  background: var(--blue);
 }
 
 .cursor-outline--active {
-  width: 52px;
-  height: 52px;
-  opacity: 0.25;
+  width: 54px;
+  height: 54px;
+  opacity: 1;
+  border-color: transparent;
+  background: rgba(52,84,209,.12);
 }
 
 @media (hover: none) {

@@ -9,11 +9,11 @@ const jobs = [
   {
     title: 'Engineering Co-op',
     company: 'Northeastern University (EDGE)',
-    period: 'Jan 2025 - Present',
+    period: 'Jan 2025 – Present',
     current: true,
     bullets: [
-      'Architected an ETL pipeline to migrate course content to Canvas via REST APIs, reducing manual migration effort by 25%',
-      'Designed a Canvas LTI-based interactive page builder using React + Vite, Node.js/Express, and PostgreSQL for dynamic page rendering',
+      'Architected an ETL pipeline that transforms Platform A course data into Canvas-compatible schemas and loads it through Canvas APIs, reducing manual migration effort by 25%',
+      'Designed a Canvas LTI page builder with React + Vite, Node.js/Express, JWT authentication, and PostgreSQL-backed reusable learning components',
     ],
   },
   {
@@ -74,8 +74,12 @@ export default function Career() {
 
   return (
     <section ref={sectionRef} className="career" id="career">
-      <div className="section-label">Experience</div>
-      <h2 className="career__heading">Career Timeline</h2>
+      <div className="section-head">
+        <span className="section-num">03</span>
+        <span className="section-name">Experience</span>
+        <span className="section-rule" />
+      </div>
+      <h2 className="career__heading">Where I&apos;ve worked</h2>
 
       {/* Animated vertical line sitting behind the rows */}
       <div className="career__line-track">
@@ -95,7 +99,7 @@ export default function Career() {
 
             {/* CENTER - line + dot */}
             <div className="career__center">
-              <div className={`career__dot ${job.current ? 'career__dot--active' : ''}`} />
+              <div className={`career__dot ${(job.current || i === 0) ? 'career__dot--active' : ''}`} />
             </div>
 
             {/* RIGHT - content */}

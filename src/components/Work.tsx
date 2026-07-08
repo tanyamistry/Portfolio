@@ -1,185 +1,82 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { FiArrowUpRight, FiGithub } from 'react-icons/fi'
 import './styles/Work.css'
-import { FiExternalLink } from 'react-icons/fi'
 
 gsap.registerPlugin(ScrollTrigger)
 
-// 3D tilt on hover
-function addTilt(el: HTMLElement) {
-  const onMove = (e: MouseEvent) => {
-    const r = el.getBoundingClientRect()
-    const x = (e.clientX - r.left) / r.width  - 0.5
-    const y = (e.clientY - r.top)  / r.height - 0.5
-    gsap.to(el, {
-      rotateY: x * 12,
-      rotateX: -y * 10,
-      scale: 1.03,
-      duration: 0.4,
-      ease: 'power2.out',
-      transformPerspective: 800,
-    })
-  }
-  const onLeave = () => gsap.to(el, { rotateY: 0, rotateX: 0, scale: 1, duration: 0.5, ease: 'power2.out' })
-  el.addEventListener('mousemove', onMove)
-  el.addEventListener('mouseleave', onLeave)
-  return () => { el.removeEventListener('mousemove', onMove); el.removeEventListener('mouseleave', onLeave) }
-}
-
-const projects = [
+const featured = [
   {
-    title: 'Real-Time Crypto Market Pipeline',
-    description:
-      'Production-style streaming pipeline ingesting live trades from the Coinbase WebSocket API, processing 10K+ events/minute through Redpanda and Spark Structured Streaming. Features OHLCV candle aggregation and an auto-refreshing Streamlit dashboard.',
-    techs: ['Python', 'Kafka', 'Apache Spark', 'PostgreSQL', 'Docker', 'Streamlit'],
-    link: 'https://github.com/tanyamistry/streaming-market-pipeline',
-    accent: '#5eead4',
-    featured: true,
+    number: '01', kicker: 'Streaming data platform', title: 'Real-Time Crypto Market Pipeline',
+    statement: 'A streaming platform for processing and analyzing live market data.',
+    description: 'A reproducible streaming stack that ingests Coinbase trades, processes 10K+ events per minute, aggregates event-time OHLCV candles, and serves a live dashboard.',
+    result: '10K+', resultLabel: 'events / minute',
+    techs: ['Python', 'Redpanda / Kafka', 'Spark', 'PostgreSQL', 'Docker'],
+    link: 'https://github.com/tanyamistry/streaming-market-pipeline', accent: 'coral', architecture: true,
   },
   {
-    title: 'DQN Reinforcement Learning Agent',
-    description:
-      'Deep Q-Network agent trained to play a shape-sorting game. Implements a full RL pipeline , environment, replay buffer, epsilon-greedy exploration, and model checkpointing.',
-    techs: ['Python', 'Deep Q-Network', 'RL', 'PyTorch'],
-    link: 'https://github.com/tanyamistry/FOAI-Project',
-    accent: '#818cf8',
-    featured: true,
+    number: '02', kicker: 'Computer vision + local AI', title: 'Automated Chart Insights',
+    statement: 'A local computer-vision workflow that extracts and explains chart insights.',
+    description: 'An OpenCV and EasyOCR pipeline detects chart structure and labels before a local LLaVA model produces plain-English findings, trends, anomalies, and JSON output.',
+    result: 'Local', resultLabel: 'privacy-first inference',
+    techs: ['OpenCV', 'EasyOCR', 'LLaVA', 'Ollama', 'Streamlit'],
+    link: 'https://github.com/tanyamistry/automated-chart-insights-generator', accent: 'rose',
   },
   {
-    title: 'Spoof Image Detection',
-    description:
-      'Binary image classifier detecting spoofed images using OpenCV preprocessing with LBP/HOG features. Logistic Regression model tuned with decision threshold, evaluated on precision, recall, and F1.',
-    techs: ['Python', 'OpenCV', 'Scikit-learn', 'NumPy'],
-    link: 'https://github.com/tanyamistry/spoof-image-detection',
-    accent: '#fb923c',
-    featured: false,
-  },
-  {
-    title: 'Automated Chart Insights Generator',
-    description:
-      'Upload any chart image and get plain-English insights powered by LLaVA running locally via Ollama. Uses OpenCV and EasyOCR to extract axis labels, detects chart type (bar, line, pie, scatter), and generates structured AI insights with JSON export.',
-    techs: ['Python', 'OpenCV', 'EasyOCR', 'LLaVA', 'Ollama', 'Streamlit'],
-    link: 'https://github.com/tanyamistry/automated-chart-insights-generator',
-    accent: '#34d399',
-    featured: false,
-  },
-  {
-    title: 'YouTube Analytics ETL Pipeline',
-    description:
-      'End-to-end ETL pipeline processing 50K+ records from YouTube trending data. Automated with AWS Glue, stored in S3, queried via Athena, visualized in Power BI.',
-    techs: ['Python', 'AWS S3', 'AWS Glue', 'Athena', 'Power BI'],
-    link: 'https://github.com/tanyamistry',
-    accent: '#60a5fa',
-    featured: false,
-  },
-  {
-    title: 'Retail Sales BI Dashboard',
-    description:
-      'Power BI dashboard for BlinkIT grocery retail data with KPI cards, sales breakdowns by item and outlet, rating analysis, and interactive slicers.',
-    techs: ['Power BI', 'DAX', 'Data Modeling', 'Excel'],
-    link: 'https://github.com/tanyamistry/Retail-Sales---Power-BI',
-    accent: '#f472b6',
-    featured: false,
-  },
-  {
-    title: 'Netflix Data Analysis',
-    description:
-      'Exploratory analysis of Netflix content data using Python , uncovering trends in genres, release years, ratings, and content distribution across countries to surface insights about streaming strategy.',
-    techs: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Jupyter'],
-    link: 'https://github.com/tanyamistry/netflix-analysis',
-    accent: '#ef4444',
-    featured: false,
-  },
-  {
-    title: 'Spotify Data Analysis',
-    description:
-      'Analysis of Spotify track data to identify patterns in audio features (tempo, energy, danceability) and their correlation with song popularity across genres and time periods.',
-    techs: ['Python', 'Pandas', 'Plotly', 'Seaborn', 'Jupyter'],
-    link: 'https://github.com/tanyamistry/spotify-analysis',
-    accent: '#4ade80',
-    featured: false,
+    number: '03', kicker: 'Reinforcement learning', title: 'DQN Learning Agent',
+    statement: 'A reinforcement-learning agent trained to solve a shape-sorting environment.',
+    description: 'A full Deep Q-Network training loop with experience replay, epsilon-greedy exploration, checkpointing, and an environment designed to make learning visible.',
+    result: 'DQN', resultLabel: 'end-to-end RL system',
+    techs: ['Python', 'PyTorch', 'Deep Q-Network', 'RL'],
+    link: 'https://github.com/tanyamistry/FOAI-Project', accent: 'lavender',
   },
 ]
 
+const archive = [
+  ['YouTube Analytics ETL', 'AWS Glue · S3 · Athena · Power BI', '50K+ records', 'https://github.com/tanyamistry'],
+  ['Spoof Image Detection', 'OpenCV · LBP/HOG · Scikit-learn', 'CV classifier', 'https://github.com/tanyamistry/spoof-image-detection'],
+  ['Retail Sales BI', 'Power BI · DAX · Data modeling', 'Interactive dashboard', 'https://github.com/tanyamistry/Retail-Sales---Power-BI'],
+] as const
+
+function Architecture() {
+  const nodes = ['Coinbase', 'Redpanda', 'Spark', 'Postgres', 'Dashboard']
+  return <div className="architecture" aria-label="Architecture: Coinbase to Redpanda to Spark to Postgres to dashboard">
+    {nodes.map((node, index) => <div className="architecture__step" key={node}>
+      <span className="architecture__node">{node}</span>
+      {index < nodes.length - 1 && <span className="architecture__line"><i /></span>}
+    </div>)}
+  </div>
+}
+
 export default function Work() {
   const sectionRef = useRef<HTMLElement>(null)
-  const gridRef    = useRef<HTMLDivElement>(null)
-
   useEffect(() => {
     const ctx = gsap.context(() => {
-      if (gridRef.current?.children) {
-        gsap.fromTo(
-          Array.from(gridRef.current.children),
-          { y: 60, opacity: 0 },
-          {
-            y: 0, opacity: 1,
-            duration: 0.7, ease: 'power3.out', stagger: 0.08,
-            scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' },
-          }
-        )
-      }
-    })
+      gsap.utils.toArray<HTMLElement>('.project').forEach(project => {
+        gsap.fromTo(project, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: project, start: 'top 82%' } })
+      })
+    }, sectionRef)
     return () => ctx.revert()
   }, [])
 
-  // Attach 3D tilt to every card (desktop only)
-  useEffect(() => {
-    if (!gridRef.current || window.matchMedia('(hover: none)').matches) return
-    const cleanups = Array.from(gridRef.current.children).map(el => addTilt(el as HTMLElement))
-    return () => cleanups.forEach(c => c())
-  }, [])
-
-  return (
-    <section ref={sectionRef} className="work" id="work">
-      <div className="section-label">Projects</div>
-      <h2 className="work__heading">Featured Work</h2>
-
-      <div ref={gridRef} className="work__grid">
-        {projects.map((p) => {
-          const inner = (
-            <>
-              <div className="work__card-top">
-                <span className="work__card-accent-bar" style={{ background: p.accent }} />
-                {p.link && <FiExternalLink className="work__card-icon" style={{ color: p.accent }} />}
-              </div>
-              <h3 className="work__card-title">{p.title}</h3>
-              <p className="work__card-desc">{p.description}</p>
-              <div className="work__card-techs">
-                {p.techs.map(t => (
-                  <span
-                    key={t}
-                    className="work__card-tech"
-                    style={{ borderColor: `${p.accent}35`, color: p.accent }}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </>
-          )
-
-          return p.link ? (
-            <a
-              key={p.title}
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`work__card ${p.featured ? 'work__card--featured' : ''}`}
-              data-hoverable
-            >
-              {inner}
-            </a>
-          ) : (
-            <div
-              key={p.title}
-              className={`work__card ${p.featured ? 'work__card--featured' : ''}`}
-            >
-              {inner}
-            </div>
-          )
-        })}
-      </div>
-    </section>
-  )
+  return <section ref={sectionRef} className="work" id="work">
+    <div className="section-head"><span className="section-num">04</span><span className="section-name">Selected Work</span><span className="section-rule" /></div>
+    <div className="work__intro"><h2>Selected engineering projects.</h2><p>Projects demonstrating my experience with streaming systems, machine learning, computer vision, databases, and production-oriented tooling.</p></div>
+    <div className="work__featured">
+      {featured.map((project, index) => <article className={`project project--${project.accent}`} key={project.title}>
+        <div className="project__rail"><span>{project.number}</span><span>{project.kicker}</span></div>
+        <div className="project__body">
+          <h3>{project.title}</h3><p className="project__statement">{project.statement}</p><p className="project__description">{project.description}</p>
+          {project.architecture && <Architecture />}
+          <div className="project__techs">{project.techs.map(tech => <span key={tech}>{tech}</span>)}</div>
+          <a href={project.link} target="_blank" rel="noreferrer" className="project__link"><FiGithub /> Explore the build <FiArrowUpRight /></a>
+        </div>
+        <div className="project__result"><strong>{project.result}</strong><span>{project.resultLabel}</span><i>{String(index + 1).padStart(2, '0')}</i></div>
+      </article>)}
+    </div>
+    <div className="archive"><div className="archive__heading"><span>Project archive</span><span>More experiments, analyses &amp; builds</span></div>
+      {archive.map(([title, stack, result, link]) => <a key={title} href={link} target="_blank" rel="noreferrer" className="archive__row"><strong>{title}</strong><span>{stack}</span><span>{result}</span><FiArrowUpRight /></a>)}
+    </div>
+  </section>
 }

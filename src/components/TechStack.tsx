@@ -2,22 +2,19 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './styles/TechStack.css'
-import Marquee from 'react-fast-marquee'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const COLORS = ['#5eead4', '#818cf8', '#fb923c', '#34d399', '#60a5fa', '#f472b6', '#facc15']
+const COLORS = ['#ec6a52', '#f48fb1', '#ef8e54', '#c178d6', '#e85d8a', '#d96a9e', '#e0a23c']
 
 const categories = [
-  { label: 'Languages',        techs: ['Python', 'SQL', 'Java', 'JavaScript', 'TypeScript', 'R'] },
-  { label: 'Data Engineering', techs: ['Apache Kafka', 'Apache Spark', 'PostgreSQL', 'Snowflake', 'ETL Pipelines'] },
-  { label: 'Cloud & DevOps',   techs: ['AWS S3', 'AWS Glue', 'Athena', 'Lambda', 'Docker', 'Git'] },
-  { label: 'ML / Data Science',techs: ['Pandas', 'NumPy', 'Scikit-learn', 'TensorFlow', 'PyTorch', 'OpenCV'] },
-  { label: 'Visualization',    techs: ['Tableau', 'Power BI', 'Streamlit', 'Plotly'] },
-  { label: 'Web Development',  techs: ['React', 'Node.js', 'Express', 'Vite'] },
+  { label: 'Core languages', techs: ['Python', 'SQL', 'Java', 'TypeScript'], proof: 'Used across streaming, ETL, APIs, and production-facing tools.' },
+  { label: 'Pipelines & storage', techs: ['Kafka', 'Spark', 'PostgreSQL', 'Snowflake', 'ETL'], proof: 'Proven in a 10K+ events/min pipeline and Canvas migration system.' },
+  { label: 'Cloud & operations', techs: ['AWS S3', 'Glue', 'Athena', 'Lambda', 'Docker'], proof: 'Applied to a 50K+ record analytics pipeline and reproducible deployments.' },
+  { label: 'Backend & product', techs: ['React', 'Node.js', 'Express', 'REST APIs', 'Vite'], proof: 'Used to build LTI-integrated tools, dashboards, and API-driven workflows.' },
+  { label: 'Applied ML', techs: ['PyTorch', 'Scikit-learn', 'OpenCV', 'Pandas', 'NumPy'], proof: 'Used in reinforcement learning, chart understanding, and vision classifiers.' },
+  { label: 'Data communication', techs: ['Tableau', 'Power BI', 'Streamlit', 'Plotly'], proof: 'Used to make technical systems legible to operators and stakeholders.' },
 ]
-
-const allTechs = categories.flatMap(c => c.techs)
 
 export default function TechStack() {
   const sectionRef  = useRef<HTMLElement>(null)
@@ -73,9 +70,13 @@ export default function TechStack() {
 
   return (
     <section ref={sectionRef} className="techstack" id="techstack">
-      <div className="section-label">Technologies</div>
-      <h2 ref={headingRef} className="techstack__heading">Tech Stack</h2>
-      <p className="techstack__sub">Tools and technologies I work with</p>
+      <div className="section-head">
+        <span className="section-num">05</span>
+        <span className="section-name">Technologies</span>
+        <span className="section-rule" />
+      </div>
+      <h2 ref={headingRef} className="techstack__heading">My toolkit</h2>
+      <p className="techstack__sub">Capabilities first. Tools in context.</p>
 
       <div ref={gridRef} className="techstack__categories">
         {categories.map((cat, ci) => (
@@ -95,19 +96,11 @@ export default function TechStack() {
                 </span>
               ))}
             </div>
+            <p className="techstack__proof">{cat.proof}</p>
           </div>
         ))}
       </div>
 
-      <div className="techstack__marquee-wrapper">
-        <Marquee gradient={false} speed={36} pauseOnHover>
-          {allTechs.map((t, i) => (
-            <span key={i} className="techstack__tag" style={{ color: COLORS[i % COLORS.length] }}>
-              {t}
-            </span>
-          ))}
-        </Marquee>
-      </div>
     </section>
   )
 }

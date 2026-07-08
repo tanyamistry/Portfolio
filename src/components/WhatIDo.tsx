@@ -19,23 +19,23 @@ interface Service {
 const services: Service[] = [
   {
     Icon: HiOutlineDatabase,
-    title: 'Data Engineering',
+    title: 'Pipelines & Streaming',
     description:
-      'Building robust ETL/ELT pipelines and real-time streaming architectures. From Kafka ingestion to Spark transformations, cloud data warehouses, and containerized deployments with Docker.',
+      'I design the path from raw input to trusted output: event ingestion, transformation, storage, orchestration, and the observability that keeps it dependable.',
     techs: ['Apache Kafka', 'Apache Spark', 'PostgreSQL', 'Snowflake', 'AWS Glue', 'Docker'],
   },
   {
     Icon: TbBrain,
-    title: 'Machine Learning & Analytics',
+    title: 'Applied Intelligence',
     description:
-      'Developing predictive models, computer vision classifiers, and data analysis workflows. Transforming complex datasets into clear, actionable insights with interactive visualization tools.',
+      'I use ML and computer vision where they create a clearer product—not as decoration. Models become useful when the surrounding data and interface are thoughtfully engineered.',
     techs: ['Python', 'Scikit-learn', 'TensorFlow', 'OpenCV', 'Pandas', 'Tableau'],
   },
   {
     Icon: LuCode,
-    title: 'Full-Stack Development',
+    title: 'Backend & Product Systems',
     description:
-      'Designing and building end-to-end web applications with modern frameworks. REST APIs, interactive dashboards, LTI integrations, and cloud-native deployments on AWS.',
+      'I connect APIs, databases, authentication, and interfaces into tools people can actually use, from Canvas LTI integrations to live operational dashboards.',
     techs: ['React', 'Node.js', 'Express', 'PostgreSQL', 'AWS Lambda', 'Streamlit'],
   },
 ]
@@ -96,7 +96,11 @@ export default function WhatIDo() {
 
   return (
     <section ref={sectionRef} className="whatido" id="whatido">
-      <div className="section-label">What I Do</div>
+      <div className="section-head">
+        <span className="section-num">02</span>
+        <span className="section-name">What I Do</span>
+        <span className="section-rule" />
+      </div>
       <h2 ref={headingRef} className="whatido__heading">My Expertise</h2>
       <div ref={cardsRef} className="whatido__cards">
         {services.map(s => (
