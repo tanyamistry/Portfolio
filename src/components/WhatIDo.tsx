@@ -29,14 +29,14 @@ const services: Service[] = [
     title: 'Applied Intelligence',
     description:
       'I use ML and computer vision where they create a clearer product—not as decoration. Models become useful when the surrounding data and interface are thoughtfully engineered.',
-    techs: ['Python', 'Scikit-learn', 'TensorFlow', 'OpenCV', 'Pandas', 'Tableau'],
+    techs: ['Python', 'Scikit-learn', 'TensorFlow', 'OpenCV', 'EasyOCR', 'Ollama'],
   },
   {
     Icon: LuCode,
     title: 'Backend & Product Systems',
     description:
       'I connect APIs, databases, authentication, and interfaces into tools people can actually use, from Canvas LTI integrations to live operational dashboards.',
-    techs: ['React', 'Node.js', 'Express', 'PostgreSQL', 'AWS Lambda', 'Streamlit'],
+    techs: ['React', 'Next.js', 'Node.js', 'Express', 'PostgreSQL', 'Streamlit'],
   },
 ]
 

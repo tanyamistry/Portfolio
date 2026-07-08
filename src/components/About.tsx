@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 const stats = [
   { display: '3.67', suffix: '',  label: 'GPA',              numeric: 3.67, decimals: 2 },
-  { display: '10K+', suffix: 'K+', label: 'Events / minute',  numeric: 10,   decimals: 0 },
-  { display: '25%',  suffix: '%', label: 'Manual effort cut', numeric: 25,   decimals: 0 },
+  { display: '2',    suffix: '',  label: 'TA roles',          numeric: 2,    decimals: 0 },
+  { display: '3',    suffix: '',  label: 'Internships',       numeric: 3,    decimals: 0 },
   { display: '2026', suffix: '',  label: 'MS CS, Dec',       numeric: 2026, decimals: 0 },
 ]
 
@@ -107,7 +107,7 @@ export default function About() {
 
       <p ref={introRef} className="about__intro">
         I&apos;m an MS Computer Science student at Northeastern University with experience in data
-        engineering, backend development, analytics, and applied machine learning.
+        engineering, backend development, analytics, applied machine learning, and technical teaching.
       </p>
 
       <div ref={statsRef} className="about__stats">
@@ -123,7 +123,7 @@ export default function About() {
 
       <div ref={tagRef} className="about__tag">
         <span className="about__tag-dot" />
-        Engineering Co-op at Northeastern EDGE · MS Computer Science, graduating December 2026
+        Teaching Assistant · Engineering Co-op at Northeastern EDGE · MS Computer Science, graduating December 2026
       </div>
     </section>
   )

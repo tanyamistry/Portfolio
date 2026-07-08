@@ -7,13 +7,40 @@ gsap.registerPlugin(ScrollTrigger)
 
 const jobs = [
   {
+    title: 'Graduate Teaching Assistant',
+    company: 'Khoury College of Computer Sciences',
+    period: 'Jul 2025 – Present',
+    current: true,
+    type: 'Teaching',
+    bullets: [
+      'Support students through office hours, assignment guidance, and debugging help across computer science coursework',
+      'Explain programming, data, and systems concepts clearly for students with different levels of technical experience',
+      'Assist with grading, feedback, and course operations while helping students build stronger problem-solving habits',
+    ],
+  },
+  {
     title: 'Engineering Co-op',
     company: 'Northeastern University (EDGE)',
-    period: 'Jan 2025 – Present',
-    current: true,
+    period: 'Jan 2026 – Jun 2026',
+    current: false,
+    type: 'Engineering',
     bullets: [
-      'Architected an ETL pipeline that transforms Platform A course data into Canvas-compatible schemas and loads it through Canvas APIs, reducing manual migration effort by 25%',
-      'Designed a Canvas LTI page builder with React + Vite, Node.js/Express, JWT authentication, and PostgreSQL-backed reusable learning components',
+      'Built an ETL pipeline that migrates Coursera course content into Canvas by reconstructing module hierarchies and generating IMS Common Cartridge packages, eliminating an estimated 10 hours/week of manual migration work',
+      'Developed a Canvas LTI 1.3 page authoring studio with Next.js, Express, ltijs, PostgreSQL, and Monaco Editor, enabling instructors to create, preview, edit, and publish interactive Canvas pages with live React rendering',
+      'Built a FERPA-aligned analytics layer tracking student page views, time-on-page, and component interactions to power course-level engagement dashboards',
+      'Automated Word-to-QTI conversion for Canvas-compatible quiz packages, eliminating an estimated 3+ hours of manual quiz creation per course',
+    ],
+  },
+  {
+    title: 'Graduate Teaching Assistant',
+    company: 'Khoury College of Computer Sciences',
+    period: 'Sep 2025 – Dec 2025',
+    current: false,
+    type: 'Teaching',
+    bullets: [
+      'Guided 200+ students in DS 3200: Introduction to Databases, covering ER modeling, relational algebra, SQL, and schema design',
+      'Mentored students through database concepts, assignment questions, and debugging workflows',
+      'Helped students translate abstract database concepts into implementation steps through examples and structured feedback',
     ],
   },
   {
@@ -21,6 +48,7 @@ const jobs = [
     company: 'One Hand Clap',
     period: 'Jun 2023 - May 2024',
     current: false,
+    type: 'Analytics',
     bullets: [
       'Built automated reporting workflows with ListenFirst API, SQL, and Excel tracking engagement metrics for Amazon Prime Video',
       'Developed Tableau dashboards comparing Prime Video and Netflix by content type, contributing to an 8% lift in engagement',
@@ -32,6 +60,7 @@ const jobs = [
     company: 'Your Career Folio',
     period: 'Sep 2022 - Nov 2022',
     current: false,
+    type: 'Analytics',
     bullets: [
       'Researched and benchmarked 10+ competitor platforms; findings shaped new client offerings and drove a 12% increase in platform usage',
       'Leveraged MS Power BI DAX to develop 5 BI solutions improving career guidance offerings',
@@ -105,8 +134,13 @@ export default function Career() {
             {/* RIGHT - content */}
             <div className="career__right">
               <div className="career__card">
-                <h3 className="career__title">{job.title}</h3>
-                <p className="career__company">{job.company}</p>
+                <div className="career__card-head">
+                  <div>
+                    <h3 className="career__title">{job.title}</h3>
+                    <p className="career__company">{job.company}</p>
+                  </div>
+                  <span className="career__type">{job.type}</span>
+                </div>
                 <ul className="career__bullets">
                   {job.bullets.map((b, j) => (
                     <li key={j}>{b}</li>

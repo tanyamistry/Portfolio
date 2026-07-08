@@ -91,6 +91,36 @@
   margin-top: auto;
 }
 
+:root[data-theme='dark'] .techstack__cat {
+  background: rgba(17, 24, 33, 0.88);
+}
+
+:root[data-theme='dark'] .techstack__cat:hover {
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28);
+  border-color: var(--border-strong);
+}
+
+:root[data-theme='dark'] .techstack__cat:nth-child(2),
+:root[data-theme='dark'] .techstack__cat:nth-child(5) {
+  background: linear-gradient(135deg, rgba(244, 241, 232, 0.1), rgba(17, 24, 33, 0.94));
+}
+
+:root[data-theme='dark'] .techstack__cat:nth-child(2) .techstack__proof,
+:root[data-theme='dark'] .techstack__cat:nth-child(5) .techstack__proof,
+:root[data-theme='dark'] .techstack__cat:nth-child(2) .techstack__pill,
+:root[data-theme='dark'] .techstack__cat:nth-child(5) .techstack__pill {
+  color: var(--text-soft);
+  border-color: var(--border);
+}
+
+:root[data-theme='dark'] .techstack__cat:nth-child(3) {
+  background: linear-gradient(135deg, rgba(244, 184, 106, 0.2), rgba(17, 24, 33, 0.94));
+}
+
+:root[data-theme='dark'] .techstack__pill:hover {
+  background: rgba(244, 241, 232, 0.06);
+}
+
 /* ── Marquee ── */
 .techstack__marquee-wrapper {
   padding: 0.7rem 0;

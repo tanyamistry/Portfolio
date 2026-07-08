@@ -8,11 +8,11 @@ gsap.registerPlugin(ScrollTrigger)
 const COLORS = ['#ec6a52', '#f48fb1', '#ef8e54', '#c178d6', '#e85d8a', '#d96a9e', '#e0a23c']
 
 const categories = [
-  { label: 'Core languages', techs: ['Python', 'SQL', 'Java', 'TypeScript'], proof: 'Used across streaming, ETL, APIs, and production-facing tools.' },
-  { label: 'Pipelines & storage', techs: ['Kafka', 'Spark', 'PostgreSQL', 'Snowflake', 'ETL'], proof: 'Proven in a 10K+ events/min pipeline and Canvas migration system.' },
+  { label: 'Core languages', techs: ['Python', 'SQL', 'Java', 'JavaScript', 'R'], proof: 'Used across streaming, ETL, analytics, APIs, and production-facing tools.' },
+  { label: 'Pipelines & storage', techs: ['Kafka', 'Spark', 'PostgreSQL', 'Snowflake', 'ETL'], proof: 'Proven in a 10K+ events/min pipeline and Canvas migration workflows.' },
   { label: 'Cloud & operations', techs: ['AWS S3', 'Glue', 'Athena', 'Lambda', 'Docker'], proof: 'Applied to a 50K+ record analytics pipeline and reproducible deployments.' },
-  { label: 'Backend & product', techs: ['React', 'Node.js', 'Express', 'REST APIs', 'Vite'], proof: 'Used to build LTI-integrated tools, dashboards, and API-driven workflows.' },
-  { label: 'Applied ML', techs: ['PyTorch', 'Scikit-learn', 'OpenCV', 'Pandas', 'NumPy'], proof: 'Used in reinforcement learning, chart understanding, and vision classifiers.' },
+  { label: 'Backend & product', techs: ['React', 'Next.js', 'Node.js', 'Express', 'REST APIs'], proof: 'Used to build LTI-integrated tools, dashboards, and API-driven workflows.' },
+  { label: 'Applied ML', techs: ['Scikit-learn', 'TensorFlow', 'PyTorch', 'OpenCV', 'Pandas'], proof: 'Used in chart understanding, OCR workflows, and vision classifiers.' },
   { label: 'Data communication', techs: ['Tableau', 'Power BI', 'Streamlit', 'Plotly'], proof: 'Used to make technical systems legible to operators and stakeholders.' },
 ]
 

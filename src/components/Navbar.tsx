@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import './styles/Navbar.css'
+import { FiMoon, FiSun } from 'react-icons/fi'
 
 const links = [
   { label: 'About', href: '#about' },
@@ -13,6 +14,16 @@ const links = [
 export default function Navbar() {
   const navRef = useRef<HTMLElement>(null)
   const [active, setActive] = useState('home')
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    if (typeof window === 'undefined') return 'light'
+    return (localStorage.getItem('theme') as 'light' | 'dark' | null)
+      ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+  })
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   useEffect(() => {
     gsap.fromTo(
@@ -49,6 +60,15 @@ export default function Navbar() {
           </li>
         ))}
       </ul>
+      <button
+        className="navbar__theme"
+        type="button"
+        onClick={() => setTheme(current => current === 'dark' ? 'light' : 'dark')}
+        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+      >
+        {theme === 'dark' ? <FiSun /> : <FiMoon />}
+      </button>
       <a className="navbar__resume" href="/Tanya_Mistry_Resume.pdf" target="_blank" rel="noreferrer">Résumé ↗</a>
     </nav>
   )

@@ -92,6 +92,36 @@
   font-weight: 500;
 }
 
+:root[data-theme='dark'] .whatido__card {
+  background: linear-gradient(135deg, rgba(17, 24, 33, 0.96), rgba(27, 36, 48, 0.88));
+  box-shadow: none;
+}
+
+:root[data-theme='dark'] .whatido__card:hover {
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.32);
+  border-color: var(--border-strong);
+}
+
+:root[data-theme='dark'] .whatido__card:nth-child(2) {
+  background: linear-gradient(135deg, rgba(142, 162, 255, 0.32), rgba(17, 24, 33, 0.92));
+}
+
+:root[data-theme='dark'] .whatido__card:nth-child(2) .whatido__card-title,
+:root[data-theme='dark'] .whatido__card:nth-child(2) .whatido__card-desc,
+:root[data-theme='dark'] .whatido__card:nth-child(2) .whatido__card-tech {
+  color: var(--text);
+}
+
+:root[data-theme='dark'] .whatido__card:nth-child(3) {
+  background: linear-gradient(135deg, rgba(244, 184, 106, 0.22), rgba(17, 24, 33, 0.94));
+}
+
+:root[data-theme='dark'] .whatido__card-icon {
+  color: var(--bg);
+  background: var(--text);
+  box-shadow: 4px 4px 0 rgba(255, 115, 92, 0.78);
+}
+
 @media (max-width: 1024px) {
   .whatido {
     padding: 5rem 2rem;

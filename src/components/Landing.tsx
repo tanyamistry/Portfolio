@@ -149,7 +149,7 @@ export default function Landing() {
       <div className="landing__inner">
         <div ref={badgeRef} className="landing__badge">
           <span className="landing__badge-dot" />
-          Open to full-time roles · Boston, MA · Dec 2026
+          MS CS @ Northeastern · TA · Open to full-time roles
         </div>
 
         <h1 className="landing__name">

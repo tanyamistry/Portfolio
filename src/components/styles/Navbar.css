@@ -14,12 +14,12 @@
 }
 
 .navbar--scrolled {
-  background: rgba(238, 233, 220, 0.88);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 1rem 3rem;
   border-color: var(--border);
-  box-shadow: 0 2px 0 rgba(23,33,29,.15);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--text) 12%, transparent);
 }
 
 .navbar__logo {
@@ -72,6 +72,25 @@
 .navbar__link--active { color: var(--text); }
 .navbar__link--active::after { width: 100%; }
 
+.navbar__theme {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.35rem;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  transition: transform .2s, background .2s, border-color .2s;
+}
+
+.navbar__theme:hover {
+  transform: translateY(-2px) rotate(-8deg);
+  background: var(--text);
+  color: var(--card);
+  border-color: var(--text);
+}
+
 .navbar__resume {
   font-size: .72rem;
   letter-spacing: .08em;
@@ -104,4 +123,5 @@
   .navbar__links li:nth-child(3),
   .navbar__links li:nth-child(4) { display: none; }
   .navbar__resume { font-size: .62rem; padding: .55rem .75rem; }
+  .navbar__theme { width: 2rem; height: 2rem; }
 }

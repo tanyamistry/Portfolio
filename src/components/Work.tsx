@@ -24,18 +24,18 @@ const featured = [
     link: 'https://github.com/tanyamistry/automated-chart-insights-generator', accent: 'rose',
   },
   {
-    number: '03', kicker: 'Reinforcement learning', title: 'DQN Learning Agent',
-    statement: 'A reinforcement-learning agent trained to solve a shape-sorting environment.',
-    description: 'A full Deep Q-Network training loop with experience replay, epsilon-greedy exploration, checkpointing, and an environment designed to make learning visible.',
-    result: 'DQN', resultLabel: 'end-to-end RL system',
-    techs: ['Python', 'PyTorch', 'Deep Q-Network', 'RL'],
-    link: 'https://github.com/tanyamistry/FOAI-Project', accent: 'lavender',
+    number: '03', kicker: 'Computer vision classifier', title: 'Spoof Image Detection',
+    statement: 'A baseline vision system for identifying spoofed image inputs.',
+    description: 'An OpenCV preprocessing pipeline extracts LBP and HOG features, then trains a tuned scikit-learn classifier evaluated with precision, recall, F1, and confusion-matrix analysis.',
+    result: 'CV', resultLabel: 'image classification',
+    techs: ['Python', 'OpenCV', 'LBP / HOG', 'Scikit-learn'],
+    link: 'https://github.com/tanyamistry/spoof-image-detection', accent: 'lavender',
   },
 ]
 
 const archive = [
   ['YouTube Analytics ETL', 'AWS Glue · S3 · Athena · Power BI', '50K+ records', 'https://github.com/tanyamistry'],
-  ['Spoof Image Detection', 'OpenCV · LBP/HOG · Scikit-learn', 'CV classifier', 'https://github.com/tanyamistry/spoof-image-detection'],
+  ['DQN Learning Agent', 'Python · PyTorch · Reinforcement learning', 'End-to-end RL system', 'https://github.com/tanyamistry/FOAI-Project'],
   ['Retail Sales BI', 'Power BI · DAX · Data modeling', 'Interactive dashboard', 'https://github.com/tanyamistry/Retail-Sales---Power-BI'],
 ] as const
 
@@ -61,8 +61,8 @@ export default function Work() {
   }, [])
 
   return <section ref={sectionRef} className="work" id="work">
-    <div className="section-head"><span className="section-num">04</span><span className="section-name">Selected Work</span><span className="section-rule" /></div>
-    <div className="work__intro"><h2>Selected engineering projects.</h2><p>Projects demonstrating my experience with streaming systems, machine learning, computer vision, databases, and production-oriented tooling.</p></div>
+    <div className="section-head"><span className="section-num">04</span><span className="section-name">Projects</span><span className="section-rule" /></div>
+    <div className="work__intro"><h2>Engineering projects.</h2><p>Hands-on systems that show my experience with streaming data, machine learning, computer vision, databases, and production-oriented tooling.</p></div>
     <div className="work__featured">
       {featured.map((project, index) => <article className={`project project--${project.accent}`} key={project.title}>
         <div className="project__rail"><span>{project.number}</span><span>{project.kicker}</span></div>

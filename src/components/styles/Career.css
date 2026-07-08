@@ -6,14 +6,13 @@
 }
 
 .career__heading {
-  font-family: var(--display);
+  font-family: var(--font);
   font-optical-sizing: auto;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 600;
-  font-style: italic;
-  margin-bottom: 3.5rem;
+  font-size: clamp(2.2rem, 5vw, 4.6rem);
+  font-weight: 680;
+  margin-bottom: 3rem;
   color: var(--text);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.07em;
 }
 
 /* ── Animated line track ── */
@@ -21,10 +20,10 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 2px;
-  top: 8.5rem;
+  width: 1px;
+  top: 24rem;
   bottom: 9rem;
-  background: var(--border);
+  background: rgba(23, 33, 29, 0.12);
   border-radius: 2px;
   z-index: 0;
 }
@@ -32,7 +31,7 @@
 .career__line-fill {
   width: 100%;
   height: 100%;
-  background: var(--blue);
+  background: rgba(52, 84, 209, 0.72);
   border-radius: 2px;
   transform-origin: top;
 }
@@ -82,24 +81,24 @@
   align-items: center;
   gap: 0.45rem;
   font-size: 0.78rem;
-  color: var(--text-soft);
+  color: rgba(23, 33, 29, 0.68);
   letter-spacing: 0.03em;
-  background: var(--card);
+  background: rgba(255, 252, 244, 0.72);
   padding: 0.35rem 0.95rem;
-  border-radius: 0;
+  border-radius: 999px;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-soft);
+  box-shadow: none;
   white-space: nowrap;
   text-align: right;
 }
 
 .career__now {
-  background: var(--coral);
-  color: #fff;
+  background: var(--blue);
+  color: white;
   font-size: 0.62rem;
   font-weight: 700;
   padding: 0.12rem 0.46rem;
-  border-radius: 0;
+  border-radius: 999px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -137,32 +136,55 @@
 }
 
 .career__card {
-  padding: 1.7rem 1.9rem;
+  padding: 1.55rem 1.7rem;
   border: 1px solid var(--border);
-  border-radius: 0;
-  background: var(--card);
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(255, 252, 244, 0.9), rgba(247, 243, 233, 0.72));
+  box-shadow: 0 20px 60px rgba(23, 33, 29, 0.07);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .career__card:hover {
-  transform: translate(-4px,-4px) rotate(-0.4deg);
-  box-shadow: 7px 7px 0 var(--blue);
+  transform: translateY(-4px);
+  border-color: rgba(52, 84, 209, 0.28);
+  box-shadow: 0 26px 70px rgba(23, 33, 29, 0.11);
+}
+
+.career__card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .career__title {
-  font-family: var(--display);
+  font-family: var(--font);
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 650;
   color: var(--text);
-  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.2rem;
 }
 
 .career__company {
   font-size: 0.85rem;
   color: var(--coral-deep);
   font-weight: 600;
-  margin-bottom: 1rem;
+}
+
+.career__type {
+  flex: 0 0 auto;
+  color: rgba(23, 33, 29, 0.58);
+  border: 1px solid rgba(23, 33, 29, 0.12);
+  border-radius: 999px;
+  padding: 0.32rem 0.7rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 252, 244, 0.72);
 }
 
 .career__bullets {
@@ -174,19 +196,21 @@
 
 .career__bullets li {
   font-size: 0.875rem;
-  color: var(--text-soft);
+  color: rgba(23, 33, 29, 0.72);
   line-height: 1.65;
   padding-left: 1.3rem;
   position: relative;
 }
 
 .career__bullets li::before {
-  content: '↳';
-  font-size: 0.7rem;
-  color: var(--rose);
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--blue);
   position: absolute;
   left: 0;
-  top: 0.2rem;
+  top: 0.72rem;
 }
 
 /* ── Last row no bottom line ── */
@@ -194,6 +218,35 @@
 .career__row:last-child .career__center,
 .career__row:last-child .career__right {
   padding-bottom: 0;
+}
+
+:root[data-theme='dark'] .career__line-track {
+  background: rgba(242, 239, 231, 0.12);
+}
+
+:root[data-theme='dark'] .career__period,
+:root[data-theme='dark'] .career__type {
+  color: var(--text-soft);
+  background: color-mix(in srgb, var(--card) 78%, transparent);
+}
+
+:root[data-theme='dark'] .career__card {
+  background:
+    linear-gradient(135deg, rgba(18, 24, 32, 0.92), rgba(27, 36, 48, 0.72));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme='dark'] .career__card:hover {
+  border-color: rgba(142, 162, 255, 0.34);
+  box-shadow: 0 28px 78px rgba(0, 0, 0, 0.34);
+}
+
+:root[data-theme='dark'] .career__dot {
+  border-color: var(--bg);
+}
+
+:root[data-theme='dark'] .career__bullets li {
+  color: var(--text-soft);
 }
 
 /* ── Tablet ── */
@@ -242,6 +295,11 @@
   }
   .career__card {
     padding: 1.3rem;
+    border-radius: 20px;
+  }
+  .career__card-head {
+    flex-direction: column;
+    gap: 0.7rem;
   }
   .career__title {
     font-size: 1.05rem;

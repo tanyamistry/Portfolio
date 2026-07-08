@@ -180,6 +180,45 @@
   color: var(--coral-deep);
 }
 
+:root[data-theme='dark'] .contact {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 115, 92, 0.16), transparent 32rem),
+    linear-gradient(180deg, rgba(18, 24, 32, 0.94), var(--bg) 72%);
+}
+
+:root[data-theme='dark'] .contact::before {
+  border-color: rgba(242, 239, 231, 0.08);
+}
+
+:root[data-theme='dark'] .contact__sub,
+:root[data-theme='dark'] .contact__link,
+:root[data-theme='dark'] .contact__footer {
+  color: var(--text-soft);
+}
+
+:root[data-theme='dark'] .contact__email-btn,
+:root[data-theme='dark'] .contact__link {
+  background: color-mix(in srgb, var(--card) 82%, transparent);
+}
+
+:root[data-theme='dark'] .contact__email-btn {
+  border-color: var(--border-strong);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme='dark'] .contact__email-icon {
+  color: var(--bg);
+}
+
+:root[data-theme='dark'] .contact__link--primary {
+  background: var(--text);
+  color: var(--bg);
+}
+
+:root[data-theme='dark'] .contact__link--primary:hover {
+  color: var(--bg);
+}
+
 @media (max-width: 1024px) {
   .contact {
     padding: 5rem 2rem 4rem;
