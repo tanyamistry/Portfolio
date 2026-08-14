@@ -8,28 +8,28 @@ gsap.registerPlugin(ScrollTrigger)
 
 const featured = [
   {
-    number: '01', kicker: 'Streaming data platform', title: 'Real-Time Crypto Market Pipeline',
+    number: '01', kicker: 'Clinical AI + hybrid RAG', title: 'TrialSage',
+    statement: 'An AI-powered search system for safer, more precise clinical-trial matching.',
+    description: 'A hybrid RAG system spanning 39K+ clinical trials and 966K+ eligibility criteria, combining text-to-SQL, semantic search, confidence-based query routing, and polarity-aware NLP with citation guardrails.',
+    result: '39K+', resultLabel: 'clinical trials indexed',
+    techs: ['Python', 'PostgreSQL', 'pgvector', 'Llama 3.1', 'Sentence Transformers', 'Docker'],
+    link: 'https://github.com/tanyamistry/TrialSage', accent: 'coral',
+  },
+  {
+    number: '02', kicker: 'Streaming data platform', title: 'Real-Time Crypto Market Pipeline',
     statement: 'A streaming platform for processing and analyzing live market data.',
     description: 'A reproducible streaming stack that ingests Coinbase trades, processes 10K+ events per minute, aggregates event-time OHLCV candles, and serves a live dashboard.',
     result: '10K+', resultLabel: 'events / minute',
     techs: ['Python', 'Redpanda / Kafka', 'Spark', 'PostgreSQL', 'Docker'],
-    link: 'https://github.com/tanyamistry/streaming-market-pipeline', accent: 'coral', architecture: true,
+    link: 'https://github.com/tanyamistry/streaming-market-pipeline', accent: 'rose', architecture: true,
   },
   {
-    number: '02', kicker: 'Computer vision + local AI', title: 'Automated Chart Insights',
+    number: '03', kicker: 'Computer vision + local AI', title: 'Automated Chart Insights',
     statement: 'A local computer-vision workflow that extracts and explains chart insights.',
     description: 'An OpenCV and EasyOCR pipeline detects chart structure and labels before a local LLaVA model produces plain-English findings, trends, anomalies, and JSON output.',
     result: 'Local', resultLabel: 'privacy-first inference',
     techs: ['OpenCV', 'EasyOCR', 'LLaVA', 'Ollama', 'Streamlit'],
-    link: 'https://github.com/tanyamistry/automated-chart-insights-generator', accent: 'rose',
-  },
-  {
-    number: '03', kicker: 'Computer vision classifier', title: 'Spoof Image Detection',
-    statement: 'A baseline vision system for identifying spoofed image inputs.',
-    description: 'An OpenCV preprocessing pipeline extracts LBP and HOG features, then trains a tuned scikit-learn classifier evaluated with precision, recall, F1, and confusion-matrix analysis.',
-    result: 'CV', resultLabel: 'image classification',
-    techs: ['Python', 'OpenCV', 'LBP / HOG', 'Scikit-learn'],
-    link: 'https://github.com/tanyamistry/spoof-image-detection', accent: 'lavender',
+    link: 'https://github.com/tanyamistry/automated-chart-insights-generator', accent: 'lavender',
   },
 ]
 
@@ -62,7 +62,7 @@ export default function Work() {
 
   return <section ref={sectionRef} className="work" id="work">
     <div className="section-head"><span className="section-num">04</span><span className="section-name">Projects</span><span className="section-rule" /></div>
-    <div className="work__intro"><h2>Engineering projects.</h2><p>Hands-on systems that show my experience with streaming data, machine learning, computer vision, databases, and production-oriented tooling.</p></div>
+    <div className="work__intro"><h2>Engineering projects.</h2><p>Hands-on systems that show my experience with applied AI, retrieval-augmented generation, streaming data, computer vision, databases, and production-oriented tooling.</p></div>
     <div className="work__featured">
       {featured.map((project, index) => <article className={`project project--${project.accent}`} key={project.title}>
         <div className="project__rail"><span>{project.number}</span><span>{project.kicker}</span></div>
