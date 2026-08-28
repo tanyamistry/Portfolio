@@ -105,7 +105,7 @@ export default function Contact() {
       <footer className="contact__footer">
         <span>Designed &amp; built by Tanya Mistry</span>
         <span className="contact__footer-sep">✦</span>
-        <span>Boston, MA · 2026</span>
+        <span>San Jose, CA · 2026</span>
       </footer>
     </section>
   )
