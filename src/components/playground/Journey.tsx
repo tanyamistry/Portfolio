@@ -1,0 +1,14 @@
+import { FiArrowUpRight, FiPlus } from 'react-icons/fi'
+
+const experiences = [
+  { number: '01', dates: 'JAN — JUN 2026', name: 'Northeastern University', team: 'EDGE', role: 'Engineering Co-op', highlight: 'Less manual work. More room to teach.', details: 'Built an ETL pipeline to move Coursera content into Canvas, saving an estimated 10 hours of manual migration each week. Owned a Canvas LTI 1.3 platform end to end, from development to deployment, and built engagement analytics and a Word-to-QTI quiz conversion pipeline.', tags: ['Next.js', 'Express', 'PostgreSQL', 'ETL'] },
+  { number: '02', dates: 'JUN 2023 — MAY 2024', name: 'One Hand Clap', team: 'ANALYTICS', role: 'Data Analyst Intern', highlight: 'Connecting content with the people who love it.', details: 'Automated reporting for Amazon Prime Video with the ListenFirst API, SQL, and Excel. Built Tableau dashboards that informed content strategy and contributed to an 8% lift in engagement. Analyzed competitor trends for Bumble India using Python.', tags: ['Python', 'SQL', 'Tableau', 'ListenFirst API'] },
+]
+
+export default function Journey() {
+  return <section className="journey-section section-pad" id="journey"><div className="content-width">
+    <div className="section-kicker"><span>03 / THE JOURNEY SO FAR</span><span>ALWAYS A WORK IN PROGRESS ↗</span></div>
+    <div className="journey-layout"><div className="journey-intro" data-reveal><h2>A little more<br /><span className="serif">experienced.</span></h2><p>Learning by doing.<br />Growing with every build.</p><a className="text-link dark-link" href="/Tanya_Mistry_Resume.pdf" target="_blank" rel="noreferrer">My full résumé <FiArrowUpRight /></a><span className="journey-flower" aria-hidden="true">✳</span></div><div className="experience-list">{experiences.map((job, i) => <details className="experience-item" key={job.number} open={i === 0} data-reveal><summary><div className="experience-date mono"><span>{job.dates}</span><span className="experience-number">/{job.number}</span></div><h3>{job.name}<FiPlus /></h3><p>{job.role} <span>· {job.team}</span></p></summary><div className="experience-content"><h4>{job.highlight}</h4><p>{job.details}</p><div className="experience-tags">{job.tags.map(tag => <span key={tag}>{tag}</span>)}</div></div></details>)}</div></div>
+    <div className="education-row" data-reveal><div className="education-label mono">STILL LEARNING.<br />ALWAYS WILL BE.</div><div className="education-item"><span className="education-symbol">N</span><div><h3>MS, Computer Science</h3><p>Northeastern University <span>· Dec 2026</span></p></div></div><div className="education-item"><span className="education-symbol mumbai-symbol">M</span><div><h3>BTech, Information Technology</h3><p>University of Mumbai <span>· Jun 2024</span></p><small>Minor in Data Science</small></div></div></div>
+  </div></section>
+}
